@@ -5,6 +5,7 @@ on:
     branches:
       - develop
       - next
+      - gitHubActionTest
     paths:
       - '**.java'
       - '**.py'
@@ -40,6 +41,8 @@ jobs:
         image: mongo:${{ matrix.mongodb }}
         ports:
           - 27017:27017
+        env:
+          - '--serviceExecutor adaptive'
     steps:
       - uses: actions/checkout@v2
         with:
